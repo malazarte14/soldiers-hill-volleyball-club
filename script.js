@@ -22,14 +22,24 @@ const STORAGE = {
 
 /* Replace these sample names with your actual regular roster. */
 const regularPlayers = [
-  { id: "member-1", name: "Player One", type: "regular" },
-  { id: "member-2", name: "Player Two", type: "regular" },
-  { id: "member-3", name: "Player Three", type: "regular" },
-  { id: "member-4", name: "Player Four", type: "regular" },
-  { id: "member-5", name: "Player Five", type: "regular" },
-  { id: "member-6", name: "Player Six", type: "regular" },
-  { id: "member-7", name: "Player Seven", type: "regular" },
-  { id: "member-8", name: "Player Eight", type: "regular" }
+  { id: "member-1", name: "Frank", type: "regular" },
+  { id: "member-2", name: "Jirah", type: "regular" },
+  { id: "member-3", name: "Duncan", type: "regular" },
+  { id: "member-4", name: "Christian", type: "regular" },
+  { id: "member-5", name: "Melchor", type: "regular" },
+  { id: "member-6", name: "Shadie", type: "regular" },
+  { id: "member-7", name: "Arian", type: "regular" },
+  { id: "member-8", name: "Jason", type: "regular" },
+  { id: "member-9", name: "Jonas", type: "regular" },
+  { id: "member-10", name: "Carl", type: "regular" },
+  { id: "member-11", name: "Valdez", type: "regular" },
+  { id: "member-12", name: "Sebby", type: "regular" },
+  { id: "member-13", name: "Jimbrix", type: "regular" },
+  { id: "member-14", name: "Jamlag", type: "regular" },
+  { id: "member-15", name: "Drei", type: "regular" },
+  { id: "member-16", name: "Kenneth", type: "regular" },
+  { id: "member-17", name: "Gesteve", type: "regular" },
+  { id: "member-18", name: "Tristan", type: "regular" }
 ];
 
 const defaultGames = [
