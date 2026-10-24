@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <title>Soldiers Hill Volleyball Club</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#home" data-page-link="home" aria-label="Soldiers Hill home">
+      <img class="brand-logo" src="logo.jpg" alt="Soldiers Hill Volleyball Club logo">
+      <span>
+        <strong>Soldiers Hill</strong>
+        <small>VOLLEYBALL CLUB</small>
+      </span>
+    </a>
+
+    <p class="nav-label">CLUB MENU</p>
+    <nav aria-label="Main navigation">
+      <button class="nav-link active" data-page="home"><span>⌂</span> Home</button>
+      <button class="nav-link" data-page="games"><span>▦</span> Games &amp; Pot</button>
+      <button class="nav-link" data-page="members"><span>♙</span> Club Members</button>
+      <button class="nav-link" data-page="roulette"><span>◉</span> Team Roulette</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span>
+      Community · Play · Connect
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SOLDIERS HILL VOLLEYBALL CLUB</p>
+        <h1 id="page-title">Home</h1>
+      </div>
+      <div class="topbar-pill"><span class="status-dot"></span> Open play</div>
+    </header>
+
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">GOOD GAMES START HERE</p>
+          <h2>Show up. <span>Play together.</span></h2>
+          <p>Check who's coming, organize your lineup, and make every game a good one.</p>
+          <button class="button button-primary" data-go="games">
+            View upcoming game <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="hero-logo-wrap">
+          <img class="hero-logo" src="logo.jpg" alt="Soldiers Hill Volleyball Club logo">
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">UPCOMING GAMES</span>
+          <strong id="home-games-count">0</strong>
+          <small>Scheduled club games</small>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">CLUB MEMBERS</span>
+          <strong id="home-members-count">0</strong>
+          <small>Regular roster</small>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">WALK-INS SAVED</span>
+          <strong id="home-walkins-count">0</strong>
+          <small>Added on this browser</small>
+        </article>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WHAT'S NEXT</p>
+          <h2>Upcoming games</h2>
+        </div>
+        <button class="text-button" data-go="games">View games →</button>
+      </div>
+
+      <div id="home-games-list" class="game-grid"></div>
+
+      <div class="welcome-panel">
+        <div>
+          <p class="eyebrow">QUICK ACCESS</p>
+          <h2>Ready to organize?</h2>
+          <p>Add a walk-in player when someone joins on the spot, then check them in for the right game.</p>
+        </div>
+        <div class="quick-actions">
+          <button class="button button-secondary" data-go="members">＋ Add walk-in</button>
+          <button class="button button-secondary" data-go="roulette">Open Team Roulette</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES AND POT -->
+    <section class="page" id="page-games">
+      <div class="section-heading page-intro">
+        <div>
+          <p class="eyebrow">GET ON THE COURT</p>
+          <h2>Games &amp; prize pot</h2>
+          <p class="muted">Check players in for each game and track the winner's pot.</p>
+        </div>
+        <button class="button button-primary" id="toggle-game-form">＋ Add a game</button>
+      </div>
+
+      <form id="game-form" class="panel form-panel" hidden>
+        <h3>Create a game</h3>
+        <div class="form-grid">
+          <label>Game title
+            <input name="title" required maxlength="80" placeholder="Community Volleyball Game">
+          </label>
+          <label>Location
+            <input name="location" required maxlength="120" placeholder="Court or venue">
+          </label>
+          <label>Date
+            <input name="date" type="date" required>
+          </label>
+          <label>Start time
+            <input name="time" type="time" required>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button button-secondary" type="button" id="cancel-game-form">Cancel</button>
+          <button class="button button-primary" type="submit">Save game</button>
+        </div>
+      </form>
+
+      <div id="games-list" class="game-grid"></div>
+    </section>
+
+    <!-- MEMBERS -->
+    <section class="page" id="page-members">
+      <div class="section-heading page-intro">
+        <div>
+          <p class="eyebrow">YOUR ROSTER</p>
+          <h2>Club Members</h2>
+          <p class="muted">Keep regular members separate from temporary walk-ins.</p>
+        </div>
+      </div>
+
+      <div class="panel add-player-panel">
+        <div>
+          <p class="eyebrow">QUICK ADD</p>
+          <h3>Add a walk-in player</h3>
+          <p class="muted">For someone who joins on the spot. No account or database needed.</p>
+        </div>
+
+        <form id="walkin-form" class="inline-form">
+          <label class="sr-only" for="walkin-name">Walk-in player's name</label>
+          <input id="walkin-name" name="name" required maxlength="80" placeholder="Enter player's name" autocomplete="off">
+          <button class="button button-primary" type="submit">＋ Add player</button>
+        </form>
+
+        <p class="small-text muted">Walk-ins are saved only in this browser on this device. You can remove them below.</p>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">REGULAR ROSTER</p>
+          <h2>Club members <span class="count-chip" id="regular-count">0</span></h2>
+        </div>
+      </div>
+      <div id="regular-members-list" class="members-grid"></div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TEMPORARY PLAYERS</p>
+          <h2>Walk-in players <span class="count-chip" id="walkin-count">0</span></h2>
+        </div>
+      </div>
+      <div id="walkin-members-list" class="members-grid"></div>
+    </section>
+
+    <!-- TEAM ROULETTE -->
+    <section class="page" id="page-roulette">
+      <div class="section-heading page-intro">
+        <div>
+          <p class="eyebrow">LET FATE PICK THE LINEUP</p>
+          <h2>Team Roulette</h2>
+          <p class="muted">Check players in under Games &amp; Pot, then select only the players who can play each position.</p>
+        </div>
+      </div>
+
+      <div class="panel roulette-controls">
+        <label for="roulette-game">Choose game
+          <select id="roulette-game"></select>
+        </label>
+        <div class="roulette-summary">
+          <span class="status-dot"></span>
+          <span id="roulette-eligible">0 players checked in for this game.</span>
+        </div>
+      </div>
+
+      <div class="panel eligibility-panel">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">MATCH-SPECIFIC ELIGIBILITY</p>
+            <h3>Choose players for each position</h3>
+            <p class="muted">Positions start with nobody selected. Check only the players who can play each position. A player can be eligible for multiple positions, but will only be drawn once per lineup.</p>
+          </div>
+          <div class="eligibility-actions">
+            <button class="button button-secondary button-small" id="select-all-eligible">Select everyone</button>
+            <button class="button button-secondary button-small" id="reset-eligibility">Clear all</button>
+          </div>
+        </div>
+        <div id="position-eligibility-list" class="position-eligibility-grid"></div>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RANDOM LINEUP</p>
+          <h2>Position assignments</h2>
+          <p class="muted">Draw the full seven-player lineup at once, or draw positions one by one. A picked player is removed from the remaining positions.</p>
+        </div>
+        <div class="roulette-actions">
+          <button class="button button-primary" id="draw-full-team">Draw full team</button>
+          <button class="button button-secondary" id="reset-roulette">Reset all draws</button>
+        </div>
+      </div>
+
+      <div id="roulette-grid" class="roulette-grid"></div>
+      <p class="small-text muted">Eligibility and walk-in players are stored locally in this browser. Draw results reset when you reload the page.</p>
+    </section>
+
+    <footer>
+      Made for Soldiers Hill Volleyball Club
+      <span>Play fair. Have fun. Welcome everyone.</span>
+    </footer>
+  </main>
+</body>
+</html>
