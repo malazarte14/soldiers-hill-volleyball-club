@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <title>Soldiers Hill Volleyball Club</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page-link="home"><img class="brand-mark" src="logo.png" alt="Soldiers Hill Volleyball Club logo"><span><strong>Soldiers Hill</strong><small>VOLLEYBALL CLUB</small></span></a>
+    <p class="nav-label">CLUB MENU</p>
+    <nav>
+      <button class="nav-link active" data-page="home">⌂ Home</button>
+      <button class="nav-link" data-page="games">▦ Games &amp; Pot</button>
+      <button class="nav-link" data-page="members">♙ Club Members</button>
+      <button class="nav-link" data-page="roulette">◉ Team Roulette</button>
+    </nav>
+    <div class="sidebar-bottom">● Community · Play · Connect</div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar"><div><p class="eyebrow">SOLDIERS HILL VOLLEYBALL CLUB</p><h1 id="page-title">Home</h1></div><span class="topbar-pill">● Open play</span></header>
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <section class="page active" id="page-home">
+      <div class="hero"><div class="hero-copy"><p class="eyebrow">GOOD GAMES START HERE</p><h2>Show up. <span>Play together.</span></h2><p>Check who's coming, organize your lineup, and make every game a good one.</p><button class="button primary" data-go="games">View games →</button></div><img class="hero-mark" src="logo.png" alt="Soldiers Hill Volleyball Club logo"></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span>UPCOMING GAMES</span><strong id="home-games-count">0</strong><small>Scheduled club games</small></article>
+        <article class="stat-card"><span>CLUB MEMBERS</span><strong id="home-members-count">0</strong><small>Regular roster</small></article>
+        <article class="stat-card"><span>WALK-INS SAVED</span><strong id="home-walkins-count">0</strong><small>Saved in this browser</small></article>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">WHAT'S NEXT</p><h2>Upcoming games</h2></div><button class="text-button" data-go="games">View games →</button></div>
+      <div id="home-games-list" class="game-grid"></div>
+      <div class="welcome-panel"><div><p class="eyebrow">QUICK ACCESS</p><h2>Ready to organize?</h2><p>Add walk-ins, check players in, then build balanced teams.</p></div><div class="quick-actions"><button class="button secondary" data-go="members">＋ Add walk-in</button><button class="button secondary" data-go="roulette">Open Team Roulette</button></div></div>
+    </section>
+
+    <section class="page" id="page-games">
+      <div class="section-heading page-intro"><div><p class="eyebrow">GET ON THE COURT</p><h2>Games &amp; prize pot</h2><p class="muted">Manage attendance, deductions, sponsorship, and the estimated winner's pot.</p></div><button class="button primary" id="toggle-game-form">＋ Add a game</button></div>
+      <form id="game-form" class="panel form-panel" hidden>
+        <h3>Create a game</h3><div class="form-grid">
+          <label>Game title<input name="title" required maxlength="80" placeholder="Community Volleyball Game"></label>
+          <label>Location<input name="location" required maxlength="120" placeholder="Court or venue"></label>
+          <label>Date<input name="date" type="date" required></label><label>Start time<input name="time" type="time" value="17:00" required></label>
+        </div><div class="form-actions"><button class="button secondary" type="button" id="cancel-game-form">Cancel</button><button class="button primary" type="submit">Save game</button></div>
+      </form>
+      <div id="games-list" class="game-grid"></div>
+    </section>
+
+    <section class="page" id="page-members">
+      <div class="section-heading page-intro"><div><p class="eyebrow">YOUR ROSTER</p><h2>Club Members</h2><p class="muted">Regular members and temporary walk-ins.</p></div></div>
+      <div class="panel add-player-panel"><div><p class="eyebrow">QUICK ADD</p><h3>Add a walk-in player</h3><p class="muted">Walk-ins are saved in this browser only.</p></div>
+        <form id="walkin-form" class="inline-form"><input id="walkin-name" required maxlength="80" placeholder="Enter player's name" autocomplete="off"><button class="button primary" type="submit">＋ Add player</button></form>
+      </div>
+      <div class="section-heading"><h2>Club members <span class="count-chip" id="regular-count">0</span></h2></div><div id="regular-members-list" class="members-grid"></div>
+      <div class="section-heading"><h2>Walk-in players <span class="count-chip" id="walkin-count">0</span></h2></div><div id="walkin-members-list" class="members-grid"></div>
+    </section>
+
+    <section class="page" id="page-roulette">
+      <div class="section-heading page-intro"><div><p class="eyebrow">LET FATE PICK THE LINEUP</p><h2>Team Roulette</h2><p class="muted">Check players in under Games &amp; Pot first. Teams are automatically balanced with 5–7 players each.</p></div></div>
+      <div class="panel roulette-controls"><label>Choose game<select id="roulette-game"></select></label><div id="roulette-eligible" class="muted">0 players checked in.</div></div>
+      <div class="panel wheel-panel">
+        <div class="section-heading compact"><div><p class="eyebrow">TEAM-BY-TEAM ROULETTE</p><h3>Spin to fill the current team</h3><p class="muted">First set eligibility one position at a time. Required positions and player counts adjust to the actual team sizes. Positions no team needs are skipped, and each player can qualify for only one position. Once all required positions are set, spin to fill each team.</p></div></div>
+        <div class="current-draw-panel"><strong id="current-team-label">Team roulette not started</strong><span id="current-slot-label" class="muted">Start team roulette to begin.</span></div>
+        <label class="position-picker">Current position<select id="wheel-position"></select></label>
+        <div class="wheel-wrap"><div class="wheel-pointer"></div><canvas id="wheel" width="440" height="440" aria-label="Animated player roulette wheel"></canvas></div>
+        <div id="wheel-result" class="wheel-result">Choose a position and spin.</div>
+        <div class="wheel-actions"><button class="button primary" id="spin-wheel">SPIN TO PICK PLAYER</button><button class="button secondary" id="reset-position-draws">Reset current draw</button></div>
+        <div class="eligibility-panel"><div class="section-heading compact"><div><h3>Eligibility by position</h3><p class="muted">Start with Setter and move through the positions each team actually needs. Required counts are calculated from the checked-in player count; unused positions are skipped.</p></div><div class="eligibility-actions"><button class="button secondary small" id="select-all-eligible">Auto-select needed</button><button class="button secondary small" id="reset-eligibility">Clear all positions</button></div></div><div id="position-eligibility-list" class="position-eligibility-grid"></div></div>
+        <div class="section-heading"><div><p class="eyebrow">FINAL RESULT</p><h2>Teams overview</h2><p id="team-status" class="muted">Start team roulette when at least 10 players are checked in.</p></div><div class="team-actions"><button class="button secondary" id="clear-teams">Clear teams</button><button class="button primary" id="generate-teams">Start team roulette</button></div></div>
+        <div id="teams-overview" class="teams-grid"><div class="empty-state">Your final team rosters will appear here.</div></div>
+      </div>
+      <p class="small-text muted">This version stores data locally in the current browser. It does not sync between devices.</p>
+    </section>
+    <footer>Made for Soldiers Hill Volleyball Club <span>Play fair. Have fun. Welcome everyone.</span></footer>
+  </main>
+  <div id="team-modal" class="team-modal" hidden role="dialog" aria-modal="true" aria-labelledby="team-modal-title">
+    <div class="team-modal-card">
+      <p class="eyebrow">TEAM COMPLETED</p><h2 id="team-modal-title">Here's your team!</h2>
+      <p id="team-modal-subtitle" class="muted"></p>
+      <div id="team-modal-roster" class="team-modal-roster"></div>
+      <div class="team-modal-actions"><button class="button secondary" id="exit-team-modal">Exit</button><button class="button primary" id="next-team-modal">OK · Next team</button></div>
+    </div>
+  </div>
+</body>
+</html>
